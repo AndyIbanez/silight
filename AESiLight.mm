@@ -27,7 +27,7 @@
 }
 -(NSString*)description
 {
-	return @"Need a quick light? Ask Siri to give you a flash light! This small tweak will enable you to turn your phone's flash on and off to use it as a flashlight. Just issue commands like "Siri, there's a blackout" or "Siri, I need a flashlight". To turn off the flash, just say "Turn off the flashlight" or something like "Thanks for the light".";
+	return @"Need a quick light? Ask Siri to give you a flash light! This small tweak will enable you to turn your phone's flash on and off to use it as a flashlight. Just issue commands like \"Siri, there's a blackout\" or \"Siri, I need a flashlight\". To turn off the flash, just say \"Turn off the flashlight\" or something like \"Thanks for the light\".";
 }
 -(NSString*)website
 {

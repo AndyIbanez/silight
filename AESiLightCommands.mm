@@ -1,4 +1,5 @@
 #import "AESiLightCommands.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation AESiLightCommands
 
@@ -19,37 +20,98 @@
 
 -(BOOL)handleSpeech:(NSString*)text tokens:(NSArray*)tokens tokenSet:(NSSet*)tokenset context:(id<SEContext>)ctx
 {
-	// logging useful during development
-	// NSLog(@">> AESiLightCommands handleSpeech: %@", text);
-
-	// react to recognized tokens (what happen or what happened)
-	if ([tokens count] == 1 && [tokenset containsObject:@"snippet"])
+	//Commands to turn the flashlight on.
+	if([tokenset containsObject:@"there's"] && [tokenset containsObject:@"a"] && [tokenset containsObject:@"blackout"])
 	{
-		// properties for the snippet (optional)
-		NSDictionary* snipProps = [NSDictionary dictionaryWithObject:@"It's working!" forKey:@"text"];
+		[ctx sendAddViewsUtteranceView:@"Will this help?"];
+		if(![self turnOn:YES])
+		{
+			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
+		}
+		return YES;
+	}
 
-		// create an array of views
-		NSMutableArray* views = [NSMutableArray arrayWithCapacity:1];
-		[views addObject:[ctx createAssistantUtteranceView:@"This is a custom snippet:"]];
-		[views addObject:[ctx createSnippet:@"AESiLightSnippet" properties:snipProps]];
+	if([tokenset containsObject:@"turn"] && [tokenset containsObject:@"on"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
+	{
+		[ctx sendAddViewsUtteranceView:@"Will this help?"];
+		if(![self turnOn:YES])
+		{
+			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
+		}
+		return YES;
+	}
 
-		// send views to the assistant
-		[ctx sendAddViews:views];
+	if([tokenset containsObject:@"it's"] && [tokenset containsObject:@"dark"] && [tokenset containsObject:@"here"])
+	{
+		[ctx sendAddViewsUtteranceView:@"Will this help?"];
+		if(![self turnOn:YES])
+		{
+			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
+		}
+		return YES;
+	}
 
-		// alternatively, for utterance response, you can use this call only:
-		//[ctx sendAddViewsUtteranceView:@"Hello Snippet!!"];
-		// alternatively, for snippet response you can use this call only:
-		//[ctx sendAddViewsSnippet:@"K3AHelloSnippet" properties:snipProps];
+	if([tokenset containsObject:@"it's"] && [tokenset containsObject:@"dark"] && [tokenset containsObject:@"here"])
+	{
+		[ctx sendAddViewsUtteranceView:@"Will this help?"];
+		if(![self turnOn:YES])
+		{
+			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
+		}
+		return YES;
+	}
 
-		// Inform the assistant that this is end of the request
-		// For more complex extensions, you can spawn an additional thread and process request asynchronly,
-		// ending with sending "request completed"
-		[ctx sendRequestCompleted];
+	if([tokenset containsObject:@"need"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
+	{
+		[ctx sendAddViewsUtteranceView:@"Will this help?"];
+		if(![self turnOn:YES])
+		{
+			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped doesn't count with a torch. I'm afraid I can't help you."];
+		}
+		return YES;
+	}
 
-		return YES; // the command has been handled by our extension (ignore the original one from the server)
+	//Commands to turn off the flashlight.
+	if([tokenset containsObject:@"thanks"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
+	{
+		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
+		[self turnOn:NO];
+		return YES;
+	}
+
+	if([tokenset containsObject:@"turn"] && [tokenset containsObject:@"off"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
+	{
+		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
+		[self turnOn:NO];
+		return YES;
 	}
 
 	return NO;
+}
+
+-(BOOL)turnOn:(BOOL)on
+{
+	AVCaptureTorchMode toggle; //This variable will choose to turn the torch on or off.
+	if(on)
+	{
+		toggle = AVCaptureTorchModeOn;
+	}else
+	{
+		toggle = AVCaptureTorchModeOff;
+	}
+
+	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	if([device hasTorch])
+	{ //If the device has a torch it can turn on...
+		[device lockForConfiguration:nil];
+		[device setTorchMode:toggle];
+		if([device respondsToSelector:@selector(unlockConfiguration)])
+		{
+			[device performSelector:@selector(unlockConfiguration)];
+		}
+		return YES; //There were no errors turning on the torch.
+	}
+	return NO; //There were errors turning on the torch (perhaps the device in question doesn't have one? i.e an iPad running Spire or anything similar).
 }
 
 @end
