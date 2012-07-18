@@ -31,6 +31,7 @@
 		{
 			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
 		}
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -44,6 +45,7 @@
 		{
 			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
 		}
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -57,6 +59,7 @@
 		{
 			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
 		}
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -70,6 +73,7 @@
 		{
 			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
 		}
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -83,6 +87,7 @@
 		{
 			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
 		}
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -96,6 +101,7 @@
 		{
 			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
 		}
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -105,6 +111,7 @@
 		NSLog(@"Thanks for the flashlight/light");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -113,6 +120,7 @@
 		NSLog(@"Turn off the light/flashlight.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -121,6 +129,7 @@
 		NSLog(@"Thank you for the flashlight/light.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -129,6 +138,7 @@
 		NSLog(@"Switch off the light/flashlight.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -137,6 +147,7 @@
 		NSLog(@"Shut off the light/flashligt");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -145,6 +156,7 @@
 		NSLog(@"Shut down the light/flashlight.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -153,6 +165,7 @@
 		NSLog(@"Shall the light be gone.");
 		[ctx sendAddViewsUtteranceView:@"And the light was gone."];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
@@ -161,6 +174,7 @@
 		NSLog(@"Light/Lights/Flashlight off.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
+		[ctx sendRequestCompleted];
 		return YES;
 	}
 
