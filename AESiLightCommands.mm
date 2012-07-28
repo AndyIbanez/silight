@@ -23,7 +23,7 @@
 	//Commands to turn the flashlight on.
 	if([tokenset containsObject:@"there's"] && [tokenset containsObject:@"a"] && [tokenset containsObject:@"blackout"])
 	{
-		NSLog(@"There's a blackout.");
+		//NSLog(@"There's a blackout.");
 		if([self turnOn:YES])
 		{
 			[ctx sendAddViewsUtteranceView:@"Will this help?"];
@@ -37,7 +37,7 @@
 
 	if([tokenset containsObject:@"turn"] && [tokenset containsObject:@"on"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Turn on the light/flashlight");
+		//NSLog(@"Turn on the light/flashlight");
 		if([self turnOn:YES])
 		{
 			[ctx sendAddViewsUtteranceView:@"Will this help?"];
@@ -51,7 +51,7 @@
 
 	if([tokenset containsObject:@"it's"] && [tokenset containsObject:@"dark"] && [tokenset containsObject:@"here"])
 	{
-		NSLog(@"It's dark in here.");
+		//NSLog(@"It's dark in here.");
 		if([self turnOn:YES])
 		{
 			[ctx sendAddViewsUtteranceView:@"Will this help?"];
@@ -65,7 +65,7 @@
 
 	if([tokenset containsObject:@"need"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"I need a light/flashlight.");
+		//NSLog(@"I need a light/flashlight.");
 		if([self turnOn:YES])
 		{
 			[ctx sendAddViewsUtteranceView:@"Will this help?"];
@@ -79,7 +79,7 @@
 
 	if([tokenset containsObject:@"let"] && [tokenset containsObject:@"there"] && [tokenset containsObject:@"be"] && [tokenset containsObject:@"light"])
 	{
-		NSLog(@"Let there be light.");
+		//NSLog(@"Let there be light.");
 		if([self turnOn:YES])
 		{
 			[ctx sendAddViewsUtteranceView:@"And thus, light was created!"];
@@ -93,7 +93,7 @@
 
 	if([tokenset containsObject:@"switch"] && [tokenset containsObject:@"on"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Switch on the light.");
+		//NSLog(@"Switch on the light.");
 		if([self turnOn:YES])
 		{
 			[ctx sendAddViewsUtteranceView:@"And thus, light was created!"];
@@ -108,7 +108,7 @@
 	//Commands to turn off the flashlight.
 	if([tokenset containsObject:@"thanks"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Thanks for the flashlight/light");
+		//NSLog(@"Thanks for the flashlight/light");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
@@ -117,7 +117,7 @@
 
 	if([tokenset containsObject:@"turn"] && [tokenset containsObject:@"off"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Turn off the light/flashlight.");
+		//NSLog(@"Turn off the light/flashlight.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
@@ -126,7 +126,7 @@
 
 	if([tokenset containsObject:@"thank"] && [tokenset containsObject:@"you"] && [tokenset containsObject:@"for"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Thank you for the flashlight/light.");
+		//NSLog(@"Thank you for the flashlight/light.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
@@ -135,7 +135,7 @@
 
 	if([tokenset containsObject:@"switch"] && [tokenset containsObject:@"off"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Switch off the light/flashlight.");
+		//NSLog(@"Switch off the light/flashlight.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
@@ -144,7 +144,7 @@
 
 	if([tokenset containsObject:@"shut"] && [tokenset containsObject:@"off"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Shut off the light/flashligt");
+		//NSLog(@"Shut off the light/flashligt");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
@@ -153,7 +153,7 @@
 
 	if([tokenset containsObject:@"shut"] && [tokenset containsObject:@"down"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
 	{
-		NSLog(@"Shut down the light/flashlight.");
+		//NSLog(@"Shut down the light/flashlight.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
@@ -162,7 +162,7 @@
 
 	if([tokenset containsObject:@"shall"] && [tokenset containsObject:@"light"] && [tokenset containsObject:@"be"] && [tokenset containsObject:@"gone"])
 	{
-		NSLog(@"Shall the light be gone.");
+		//NSLog(@"Shall the light be gone.");
 		[ctx sendAddViewsUtteranceView:@"And the light was gone."];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
@@ -171,7 +171,7 @@
 
 	if(([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"] || [tokenset containsObject:@"lights"]) && [tokenset containsObject:@"off"])
 	{
-		NSLog(@"Light/Lights/Flashlight off.");
+		//NSLog(@"Light/Lights/Flashlight off.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
