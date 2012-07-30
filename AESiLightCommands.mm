@@ -104,6 +104,36 @@
 		[ctx sendRequestCompleted];
 		return YES;
 	}
+    
+    //Begin geek commands.
+    if([tokenset containsObject:@"lumos"])
+	{
+		//NSLog(@"I need a light/flashlight.");
+		if([self turnOn:YES])
+		{
+			[ctx sendAddViewsUtteranceView:@"Lumos Maxima!"];
+		}else
+		{
+			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
+		}
+		[ctx sendRequestCompleted];
+		return YES;
+	}
+    
+    if([tokenset containsObject:@"use"] && [tokenset containsObject:@"flash"])
+	{
+		//NSLog(@"Switch on the light.");
+		if([self turnOn:YES])
+		{
+			[ctx sendAddViewsUtteranceView:@"Siri used Flash!"];
+            [ctx sendAddViewsUtteranceView:@"It's super effective!"];
+		}else
+		{
+			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
+		}
+		[ctx sendRequestCompleted];
+		return YES;
+	}
 
 	//Commands to turn off the flashlight.
 	if([tokenset containsObject:@"thanks"] && ([tokenset containsObject:@"light"] || [tokenset containsObject:@"flashlight"]))
@@ -173,6 +203,23 @@
 	{
 		//NSLog(@"Light/Lights/Flashlight off.");
 		[ctx sendAddViewsUtteranceView:@"I hope that helped!"];
+		[self turnOn:NO];
+		[ctx sendRequestCompleted];
+		return YES;
+	}
+    
+    //Begin shut off geek commands.
+    if([tokenset containsObject:@"nox"])
+	{
+		[ctx sendAddViewsUtteranceView:@"I hope my magic was powerful enough for you!"];
+		[self turnOn:NO];
+		[ctx sendRequestCompleted];
+		return YES;
+	}
+    
+    if([tokenset containsObject:@"return"])
+	{
+		[ctx sendAddViewsUtteranceView:@"Going back to my Pokéball!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
 		return YES;
