@@ -127,6 +127,8 @@
 		{
 			[ctx sendAddViewsUtteranceView:@"Siri used Flash!"];
             [ctx sendAddViewsUtteranceView:@"It's super effective!"];
+            //[ctx sendAddViewsUtteranceView:@"Siri dissipated the darkness!"];
+            [ctx sendAddViewsUtteranceView:@"By the way, there are many Geodudes and Zubats in this cave."];
 		}else
 		{
 			[ctx sendAddViewsUtteranceView:@"I'm sorry, the device I'm trapped in doesn't count with a torch. I'm afraid I can't help you."];
@@ -217,9 +219,9 @@
 		return YES;
 	}
     
-    if([tokenset containsObject:@"return"])
+    if([tokenset containsObject:@"come"] && [tokenset containsObject:@"back"])
 	{
-		[ctx sendAddViewsUtteranceView:@"Going back to my Pokéball!"];
+		[ctx sendAddViewsUtteranceView:@"Pika, Pika!"];
 		[self turnOn:NO];
 		[ctx sendRequestCompleted];
 		return YES;
